@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { motion } from 'motion/react';
 import { Search, Sparkles, MessageSquare, ExternalLink, Filter, ArrowUpRight, Download, CheckCircle2 } from 'lucide-react';
 import { DISCORD_AIR_STUDIO, PROJECTS_DATA } from '../data/content';
 import { WorkCategory, Project } from '../types';
@@ -34,7 +35,13 @@ export const Works: React.FC = () => {
   }, [activeFilter, searchQuery]);
 
   return (
-    <section className="py-16 md:py-24 px-6 max-w-6xl mx-auto animate-fadeIn">
+    <motion.section 
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="py-16 md:py-24 px-6 max-w-6xl mx-auto"
+    >
       {/* Section Header matching image 2: Mis trabajos. */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
@@ -224,6 +231,6 @@ export const Works: React.FC = () => {
         project={selectedProject}
         onClose={() => setSelectedProject(null)}
       />
-    </section>
+    </motion.section>
   );
 };
