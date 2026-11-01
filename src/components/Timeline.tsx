@@ -1,10 +1,17 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { TIMELINE_DATA } from '../data/content';
 import { Sparkles, Flame } from 'lucide-react';
 
 export const Timeline: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 px-6 max-w-6xl mx-auto animate-fadeIn">
+    <motion.section 
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="py-16 md:py-24 px-6 max-w-6xl mx-auto"
+    >
       {/* Section Header matching image 3: Mi trayectoria. */}
       <div className="text-center max-w-2xl mx-auto mb-16">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
@@ -127,6 +134,6 @@ export const Timeline: React.FC = () => {
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
