@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'motion/react';
 import { ArrowUpRight, MessageSquare } from 'lucide-react';
 import { RETROFLAS_AVATAR } from '../data/content';
 import { NavTab } from './Navbar';
@@ -10,7 +11,13 @@ interface AboutMeProps {
 
 export const AboutMe: React.FC<AboutMeProps> = ({ onNavigate }) => {
   return (
-    <section className="py-16 md:py-24 px-6 max-w-6xl mx-auto animate-fadeIn">
+    <motion.section 
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="py-16 md:py-24 px-6 max-w-6xl mx-auto"
+    >
       {/* Main Bio Card */}
       <div className="bg-[#120a0a] border border-orange-950/80 rounded-3xl p-8 md:p-12 shadow-2xl glow-orange">
         {/* Header with Avatar and Title */}
@@ -82,6 +89,6 @@ export const AboutMe: React.FC<AboutMeProps> = ({ onNavigate }) => {
         {/* Testimonials Component inside 'Sobre mí' */}
         <Testimonials />
       </div>
-    </section>
+    </motion.section>
   );
 };
