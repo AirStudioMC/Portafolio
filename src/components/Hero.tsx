@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { ArrowUpRight, ArrowRight, MessageSquare, Check, Copy, ExternalLink, ShieldCheck } from 'lucide-react';
 import { DISCORD_PERSONAL, DISCORD_AIR_STUDIO, RETROFLAS_AVATAR } from '../data/content';
 import { NavTab } from './Navbar';
@@ -22,7 +23,13 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   };
 
   return (
-    <section className="relative pt-16 pb-20 md:pt-24 md:pb-28 px-6 max-w-6xl mx-auto infra-grid-bg animate-fadeIn">
+    <motion.section 
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="relative pt-16 pb-20 md:pt-24 md:pb-28 px-6 max-w-6xl mx-auto infra-grid-bg"
+    >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Column: Minimalist Typography & Actions in Orange/Red */}
         <div className="lg:col-span-7 flex flex-col justify-center">
@@ -150,6 +157,6 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
